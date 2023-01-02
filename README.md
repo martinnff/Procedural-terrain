@@ -6,3 +6,5 @@ To build the trees I implemented a Lindenmayer system interpreter (https://en.wi
 
 For ground modelling a tool is available that uses perlin noise to generate noisy artefacts mimicking the irregularities of the terrain.
 
+![Alt text](https://github.com/martinnff/Procedural-terrain/blob/main/image1.png "procedural landscape")
+
