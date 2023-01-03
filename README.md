@@ -6,3 +6,11 @@ To build the trees I implemented a Lindenmayer system interpreter (https://en.wi
 
 For ground modelling a tool is available that uses perlin noise to generate noisy artefacts mimicking the irregularities of the terrain.
 
+![Alt text](https://github.com/martinnff/Procedural-terrain/blob/main/image1.png "procedural landscape")
+
+The perlin_noise.R file contains the functions dedicated to terrain simulation using perlin noise and the lSystem.R file contains the implementations for tree creation.
+
+An example of how to use this tool can be found in the simulation.R file. The landscape in the image is a capture of the point cloud generated with this script.
+
+This repository is in prototyping phase. In the near future I intend to add rules to generate trees with various base phenotypes of real trees and rewrite these functions in c++ to parallelise and speed up the computation time.
+
