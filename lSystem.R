@@ -1,6 +1,8 @@
+# Rules for the l-system string modification
+
 b1 = function() c('F','+','[','.','[','.','X',']','-','X',']','-','F','[','.','-','F','X',']','+','X')
 b2 = function() c('F','F')
-plant = list(axiom='X',
+plant1 = list(axiom='X',
               rules=list(r1=list(a='X',
                                  b=b1),
                          r2=list(a='F',
@@ -11,7 +13,7 @@ b4 = function() c('F','.','[','.','+','r','x',']','/','F','.','b')
 b5 = function() c('F','.','[','.','-','r','y',']','\\','F','.','a')
 b6 = function() sample(c('a','b'),1,prob=c('0.9','0.1'))
 b7 = function() sample(c('b','a'),1,prob=c('0.9','0.1'))
-leaf = list(axiom='a',
+plant2 = list(axiom='a',
                rules=list(r1=list(a='F',
                                   b=b3),
                           r1=list(a='a',
@@ -25,7 +27,7 @@ leaf = list(axiom='a',
 
 b8 = function() c('X','.','[','-','F','.','F','.','F',']','.','[','+','F','.','F','.','F',']','.','F','.','X')
 b9 = function() c('Y','.','F','X','.','[','+','Y',']','.','[','-','Y',']')
-bush = list(axiom='Y',
+plant3 = list(axiom='Y',
              rules=list(r1=list(a='X',
                                 b=b8),
                         r2=list(a='Y',
@@ -38,7 +40,7 @@ b11 = function() {
   ind=sample(c(1,2),1,prob=c(0.3,0.7))
   o[,ind]
 }
-conifer = list(axiom='X',
+plant4 = list(axiom='X',
                rules=list(r1=list(a='X',
                                   b=b10),
                           r2=list(a='F',
@@ -50,20 +52,20 @@ b12 = function() {
   ind=sample(c(1,2),1)
   o[,ind]
 }
-plant2 = list(axiom='F',
+plant5 = list(axiom='F',
               rules=list(r1=list(a='F',
                                  b=b12),
                          r2=list(a='X',
                                  b=b12)))
 
 b13 = function() c('F','.','F','-','.','[','-','F','+','F','+','F',']','+','.','[','+','F','-','F','-','F',']')
-plant3 = list(axiom='F',
+plant6 = list(axiom='F',
                rules=list(r1=list(a='F',
                                   b=b13)))
 
 b14 = function() c('F','[','+','.','F','+','F',']','[','.','-','F','-','F',']','.','F')
 
-plant4 = list(axiom='F',
+plant7 = list(axiom='F',
              rules=list(r1=list(a='F',
                                 b=b14)))
 
@@ -75,7 +77,7 @@ b17 = function() {o=data.frame(a=c('F','r','[','+2','.','r','B',']','.','B'),
                   o[,ind]}
 
 
-plant5 = list(axiom='A',
+plant8 = list(axiom='A',
               rules=list(r1=list(a='A',
                                  b=b15),
                          r2=list(a='B',
@@ -84,6 +86,8 @@ plant5 = list(axiom='A',
                                  b=b17)))
 
 
+
+# function to create an modify the instruction string using the specified rules
 evolve = function(Lsystem,n,terminal.leafs=3){
   state=c(Lsystem$axiom)
   for(i in seq_len(n)){
@@ -144,6 +148,7 @@ evolve = function(Lsystem,n,terminal.leafs=3){
   return(state)
 }
 
+#function to draw a cilinder branch in a specified direction
 cone = function(density=0.5,size1=1,size2=0.8,size3=30,center=c(0,0,0),angle=c(0,0,0)){
   
   origin=data.frame(x=center[1],
@@ -187,6 +192,7 @@ cone = function(density=0.5,size1=1,size2=0.8,size3=30,center=c(0,0,0),angle=c(0
   list(pts,center)
 }
 
+# function to draw leafs
 term_leaf = function(density=40,size1=0.2,size2=0.4,center=c(0,0,0),angle=c(0,0,0)){
   n=max(round(density*size1*size2),2)
   origin=data.frame(x=center[1]+rnorm(1,0,size2*3),
@@ -219,6 +225,7 @@ term_leaf = function(density=40,size1=0.2,size2=0.4,center=c(0,0,0),angle=c(0,0,
   return(pts)
 }
 
+# dictionary to interpretate the instructions string with the drawing functions
 alfabet=list(
   names=list('F','[',']','+','-','&','^','\\' ,'/','+2','-2','&2','^2','\\2' ,'/','|','d','X','0','.','r'),
   actions=list(
@@ -346,7 +353,7 @@ alfabet=list(
   )
 )
 
-
+# function that comunicates the instructions string with the alfabet to create the pointcloud
 produce = function(instructions,alfabet,origin=c(0,0,0),
                    factor1=0.95,
                    factor2=0.95,

@@ -51,7 +51,7 @@ for(i in seq_len(n)){
   origin=origins[i,]
   # create the instructions to grow a tree with random number of iterations 
   # from 7 to 10
-  instructions = evolve(plant5, #lsystem rules
+  instructions = evolve(plant8, #lsystem rules
                         n=round(runif(1,7,10)),# tree size
                         terminal.leafs=10)
   # Execute the growing instructions
