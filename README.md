@@ -1,6 +1,6 @@
 # Procedural-terrain
 
-In my master's degree project I worked on lidar point cloud classification models in a forestry context. One of the problems I encountered was to get labelled datasets with the characteristics I wanted (leaves, branches and soil labelled with mixtures of tree species) and a sufficient size to be able to train. for this reason I decided to implement tools that allow me to procedurally model synthesised point clouds.
+In my master's degree project I worked on lidar point cloud classification models in a forestry context. One of the problems I encountered was to get labelled datasets with the characteristics I wanted (leaves, branches and soil labelled with mixtures of tree species) and a sufficient size to be able to train. While playing elder ring I realised that the synthetic trees used to create the map could be the solution to my lack of real quality data. So I decided to employ the methods used in game development to generate my own point clouds.
 
 To build the trees was implemented a Lindenmayer system interpreter (https://en.wikipedia.org/wiki/L-system) and a function that translates these instructions into point clouds sampled on the branches (cylinders) and leaves (flat surfaces) with the desired density.
 
