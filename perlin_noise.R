@@ -43,7 +43,7 @@ perlin <- function(points,grid,smoothness=3) {
   stepsy = dim(grid)[2]-1
   dimx = 1/(stepsx)
   dimy = 1/(stepsy)
-  out = c()
+  out = 0
   for(i in seq_len(length(points[,1]))){
     x0 = ((points[i,1])%/%dimx)+1
     y0 = ((points[i,2])%/%dimy)+1

@@ -6,7 +6,7 @@ plant = list(axiom='X',
                          r2=list(a='F',
                                  b=b2)))
 
-b3 = function() c('F')
+b3 = function() 'F'
 b4 = function() c('F','.','[','.','+','r','x',']','/','F','.','b')
 b5 = function() c('F','.','[','.','-','r','y',']','\\','F','.','a')
 b6 = function() sample(c('a','b'),1,prob=c('0.9','0.1'))
@@ -34,7 +34,7 @@ bush = list(axiom='Y',
 b10 = function() c('F','[','+','X',']','[','-','X',']','F','X')
 b11 = function() {
   o=data.frame(a=c('.','F','F'),
-               b=c('F'))
+               b='F')
   ind=sample(c(1,2),1,prob=c(0.3,0.7))
   o[,ind]
 }
@@ -70,7 +70,7 @@ plant4 = list(axiom='F',
 b15 = function() c('F','[','&','.','B',']','/','.','A')
 b16 = function() c('F','[','-2','.','r','C',']','.','C')
 b17 = function() {o=data.frame(a=c('F','r','[','+2','.','r','B',']','.','B'),
-                               b=c('0'))
+                               b='0')
                   ind = sample(c(1,2),1,prob=c(0.9,0.1))
                   o[,ind]}
 

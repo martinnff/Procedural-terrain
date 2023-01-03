@@ -4,7 +4,7 @@ source('./perlin_noise.R')
 # create irregular terrain with water areas
 
 set.seed(1)
-#create grids with sizes acording to the scale of the features
+# create grids with sizes acording to the scale of the features
 grid1 = gradientGrid(dim=c(2,2,2)) #big terrain artifacts
 grid2 = gradientGrid(dim=c(12,12,2)) #small terrain artefacts
 grid3 = gradientGrid(dim=c(20,20,2)) #water artefacts
@@ -45,7 +45,7 @@ colnames(water) = c('x','y','z','class')
 set.seed(1)
 n=20 #number of trees
 # select random origins from the ground points
-origins=ground[sample(c(1:nrow(ground)),n),1:3] 
+origins=ground[sample(seq_len(nrow(ground)),n),1:3] 
 trees=data.frame(x=0,y=0,z=0,class=0)
 for(i in seq_len(n)){
   origin=origins[i,]
