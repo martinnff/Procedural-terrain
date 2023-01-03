@@ -4,7 +4,7 @@ In my master's degree project I worked on lidar point cloud classification model
 
 To build the trees was implemented a Lindenmayer system interpreter (https://en.wikipedia.org/wiki/L-system) and a function that translates these instructions into point clouds sampled on the branches (cylinders) and leaves (flat surfaces) with the desired density.
 
-A terrain modelling tool is available, these tool uses perlin noise to create noise artefacts that mimic the irregularities of the terrain.
+A terrain modelling tool is available, these tool uses perlin noise (https://en.wikipedia.org/wiki/Perlin_noise) to create noise artefacts that mimic the irregularities of the terrain.
 
 ![Alt text](https://github.com/martinnff/Procedural-terrain/blob/main/image1.png "procedural landscape")
 
