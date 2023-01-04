@@ -1,5 +1,5 @@
-# Rules for the l-system string modification
 
+# Rules for the l-system string modification
 b1 = function() c('F','+','[','.','[','.','X',']',
                   '-','X',']','-','F','[','.','-',
                   'F','X',']','+','X')
@@ -12,7 +12,7 @@ plant1 = list(axiom='X',
 
 b3 = function() 'F'
 b4 = function() c('F','.','[','.','+','r','x',']','/','F','.','b')
-b5 = function() c('F','.','[','.','-','r','y',']','\\','F','.','a')
+b5 = function() c('F','.','[','.','-','r','y',']','r','F','.','a')
 b6 = function() sample(c('a','b'),1,prob=c('0.9','0.1'))
 b7 = function() sample(c('b','a'),1,prob=c('0.9','0.1'))
 plant2 = list(axiom='a',
@@ -27,69 +27,35 @@ plant2 = list(axiom='a',
                           r1=list(a='y',
                                   b=b7)))
 
-b8 = function() c('X','.','[','-','F','.','F','.','F',']','.','[','+','F','.','F','.','F',']','.','F','.','X')
-b9 = function() c('Y','.','F','X','.','[','+','Y',']','.','[','-','Y',']')
-plant3 = list(axiom='Y',
-             rules=list(r1=list(a='X',
-                                b=b8),
-                        r2=list(a='Y',
-                                b=b9)))
-
-b10 = function() c('F','[','+','X',']','[','-','X',']','F','X')
-b11 = function() {
-  o=data.frame(a=c('.','F','F'),
-               b='F')
-  ind=sample(c(1,2),1,prob=c(0.3,0.7))
+b8 = function() c('F','[','.','+','r','X',']','[','.','-','r','X',']','.','/','F','X')
+b9 = function() {
+  o=data.frame(a=c('.','F'),
+               b='0')
+  ind=sample(c(1,2),1,prob=c(0.9,0.1))
   o[,ind]
 }
-plant4 = list(axiom='X',
+plant3 = list(axiom='X',
                rules=list(r1=list(a='X',
-                                  b=b10),
+                                  b=b8),
                           r2=list(a='F',
-                                  b=b11)))
+                                  b=b9)))
 
-b12 = function() {
-  o=data.frame(a=c('X','[','+','F',']','F'),
-               b=c('X','[','-','F',']','F'))
-  ind=sample(c(1,2),1)
-  o[,ind]
-}
-plant5 = list(axiom='F',
-              rules=list(r1=list(a='F',
-                                 b=b12),
-                         r2=list(a='X',
-                                 b=b12)))
-
-b13 = function() c('F','.','F','-','.','[','-','F','+','F','+','F',']','+','.','[','+','F','-','F','-','F',']')
-plant6 = list(axiom='F',
-               rules=list(r1=list(a='F',
-                                  b=b13)))
-
-b14 = function() c('F','[','+','.','F','+','F',']','[','.','-','F','-','F',']','.','F')
-
-plant7 = list(axiom='F',
-             rules=list(r1=list(a='F',
-                                b=b14)))
-
-b15 = function() c('F','[','&','.','B',']','/','.','A')
-b16 = function() c('F','[','-2','.','r','C',']','.','C')
-b17 = function() {o=data.frame(a=c('F','r','[','+2','.','r','B',']','.','B'),
+b10 = function() c('F','[','&','.','B',']','/','.','A')
+b11 = function() c('F','[','-2','.','r','C',']','.','C')
+b12 = function() {o=data.frame(a=c('F','r','[','+2','.','r','B',']','.','B'),
                                b='0')
                   ind = sample(c(1,2),1,prob=c(0.9,0.1))
                   o[,ind]}
 
-
-plant8 = list(axiom='A',
+plant4 = list(axiom='A',
               rules=list(r1=list(a='A',
-                                 b=b15),
+                                 b=b10),
                          r2=list(a='B',
-                                 b=b16),
+                                 b=b11),
                          r2=list(a='C',
-                                 b=b17)))
+                                 b=b12)))
 
-
-
-# function to create an modify the instruction string using the specified rules
+# function to create and modify the string of instructions using the specified rules
 evolve = function(Lsystem,n,terminal.leafs=3){
   state=c(Lsystem$axiom)
   for(i in seq_len(n)){
@@ -344,7 +310,7 @@ alfabet=list(
     },
     a20=function(tree){
       ts=length(tree$states)
-      tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0-runif(3,-0.5,0.5)
+      tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0+runif(3,-pi/8,pi/8)
       return(tree)
     }
   )
@@ -385,7 +351,21 @@ produce = function(instructions,alfabet,origin=c(0,0,0),
       }
     }
   }
-  return(tree[[2]])
+  rotation_angle = runif(1,0,2*pi)
+  rotation_matrix = matrix(data=c(cos(rotation_angle),-sin(rotation_angle),0,
+                                 sin(rotation_angle),cos(rotation_angle),0,
+                                 0,0,1),ncol=3,byrow=T)
+  tree=as.matrix(tree[[2]][-1,])
+
+  xyz = data.frame(x=tree[,1]-origin[1,1],
+                   y=tree[,2]-origin[1,2],
+                   z=tree[,3]-origin[1,3])
+
+  xyz=as.matrix(xyz)%*%rotation_matrix
+  tree[,1]=xyz[,1]+origin[1,1]
+  tree[,2]=xyz[,2]+origin[1,2]
+  tree[,3]=xyz[,3]+origin[1,3]
+  return(tree)
 }
 
 
