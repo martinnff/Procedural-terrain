@@ -4,7 +4,7 @@ In my master's degree project I worked on lidar point cloud classification model
 
 To build the synthetic trees was implemented a Lindenmayer system generator (https://en.wikipedia.org/wiki/L-system) and a function to translate the L-system instructions into point clouds sampled on the branches (cylinders) and leaves (flat surfaces) with the desired density.
 
-The componets of a L-system are an afabet or set of characters with asociated production meanings, an axiom or initial state and the rules to modify the initial axiom in an iterative way. The alfabet used has the folowing actions:
+The componets of a L-system are an afabet or set of characters with asociated production meanings, an axiom or initial state and the rules to modify the initial axiom by substitution in an iterative way. The alfabet used has the folowing actions:
 
 - F Grow forward
 - [ Save last state
