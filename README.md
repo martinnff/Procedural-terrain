@@ -1,8 +1,8 @@
 # Procedural-terrain
 
-In my master's degree project I worked on lidar point cloud classification models in a forestry context. One of the problems I encountered was to get labelled datasets with the characteristics I wanted (leaves, branches and soil labelled with mixtures of tree species) and a sufficient size to be able to train. While playing Elden Ring I realised that the synthetic trees used to create the map could be the solution to my lack of real quality data so I decided to employ the methods used in game development to generate my own point clouds.
+In my master's degree project I worked on lidar point cloud classification models in a forestry context. One of the problems I encountered was to get labelled datasets with the characteristics I wanted (leaves, branches and soil labelled with mixtures of tree species) and a sufficient size to be able to train deep learning models. While playing Elden Ring I realised that the synthetic trees used to create the maps could be the solution to my lack of real quality data so I decided to employ the methods used in game development to generate my own point clouds.
 
-To build the synthetic trees was implemented a Lindenmayer system generator (https://en.wikipedia.org/wiki/L-system) and a function to translate L-system the instructions into point clouds sampled on the branches (cylinders) and leaves (flat surfaces) with the desired density.
+To build the synthetic trees was implemented a Lindenmayer system generator (https://en.wikipedia.org/wiki/L-system) and a function to translate the L-system instructions into point clouds sampled on the branches (cylinders) and leaves (flat surfaces) with the desired density.
 
 The componets of a L-system are an afabet or set of characters with asociated production meanings, an axiom or initial state and the rules to modify the initial axiom in an iterative way. The alfabet used has the folowing actions:
 
