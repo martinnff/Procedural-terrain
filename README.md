@@ -71,7 +71,7 @@ A terrain modelling tool is available, these tool uses perlin noise (https://en.
 
 ![Alt text](https://github.com/martinnff/Procedural-terrain/blob/main/image2.png "tree detail")
 
-The perlin_noise.R file contains the functions dedicated to terrain simulation using perlin noise and the lSystem.R file contains the implementations for tree creation. An example of how to use these tools can be found in the simulation.R file. The landscape in the previous image is a snapshot of the point cloud generated with this script.
+The perlin_noise.R file contains the functions dedicated to terrain simulation using perlin noise and the lSystem.R file contains the implementations for tree creation. An example of how to use these tools can be found in the simulation.R file. The landscape of the previous image is a snapshot of the point cloud generated with this script.
 
 This repository is curently in a prototype phase. In the near future I intend to add rules to generate trees with various base phenotypes of real trees and rewrite these functions in c++ to parallelise and speed up the computation time.
 
