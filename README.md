@@ -22,7 +22,7 @@ The componets of a L-system are an afabet or set of characters with asociated pr
 - \\2 Positive rotation in x axis with angle_2 
 - /2 Negative rotation in x axis with angle_2
 - | Turn 180º
-- d Positive rotation in x axis with angle_3
+- d Rotate main branch with angle_3
 - X Do nothing
 - 0 Terminal branch
 - . Decrease length and width with f1 and f2 factors
