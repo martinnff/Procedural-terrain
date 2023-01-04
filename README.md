@@ -51,7 +51,7 @@ instructions = evolve(plant1, # lsystem rules
                       
 out=produce(instructions,
             alfabet,           # dictionary of functions to interpretate the instructions
-                               # given in the lSystem.R file
+                               # this alfabet is a list contained in the lSystem.R file
             origin=c(0,0,0),
             size1=2,           # initial width 
             size2=20,          # initial lenght
