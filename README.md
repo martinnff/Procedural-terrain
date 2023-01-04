@@ -6,9 +6,9 @@ To build the synthetic trees was implemented a Lindenmayer system generator (htt
 
 The componets of a L-system are an afabet or set of characters with asociated production meanings, an axiom or initial state and the rules to modify the initial axiom in an iterative way. The alfabet used has the folowing actions:
 
-- F Move forward
+- F Grow forward
 - [ Save last state
-- ] Pop last state
+- ] Pop last state, and return to last state saved
 - $+$ Positive rotation in z axis with angle_1
 - $-$ Negative rotation in z axis with angle_1
 - & Positive rotation in y axis with angle_1
