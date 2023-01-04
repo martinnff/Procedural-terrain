@@ -1,6 +1,8 @@
 # Rules for the l-system string modification
 
-b1 = function() c('F','+','[','.','[','.','X',']','-','X',']','-','F','[','.','-','F','X',']','+','X')
+b1 = function() c('F','+','[','.','[','.','X',']',
+                  '-','X',']','-','F','[','.','-',
+                  'F','X',']','+','X')
 b2 = function() c('F','F')
 plant1 = list(axiom='X',
               rules=list(r1=list(a='X',
@@ -227,7 +229,7 @@ term_leaf = function(density=40,size1=0.2,size2=0.4,center=c(0,0,0),angle=c(0,0,
 
 # dictionary to interpretate the instructions string with the drawing functions
 alfabet=list(
-  names=list('F','[',']','+','-','&','^','\\' ,'/','+2','-2','&2','^2','\\2' ,'/','|','d','X','0','.','r'),
+  names=list('F','[',']','+','-','&','^','\\' ,'/','+2','-2','&2','^2','\\2','|','d','X','0','.','r'),
   actions=list(
     a1=function(tree){
       ts=length(tree$states)
@@ -315,23 +317,18 @@ alfabet=list(
     },
     a15=function(tree){
       ts=length(tree$states)
-      tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0-c(runif(1,tree$states[[ts]]$angle2*0.7,tree$states[[ts]]$angle2),0,0)
+      tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0+c(pi,pi,pi)
       return(tree)
     },
     a16=function(tree){
       ts=length(tree$states)
-      tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0+c(pi,pi,pi)
-      return(tree)
-    },
-    a17=function(tree){
-      ts=length(tree$states)
       tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0+c(runif(1,tree$states[[ts]]$angle3*0.8,tree$states[[ts]]$angle3),0,0)
       return(tree)
     },
-    a18=function(tree){
+    a17=function(tree){
       return(tree)
     },
-    a19=function(tree){
+    a18=function(tree){
       ts=length(tree$states)
       origin=tree$states[[ts]]$origin
       angle=tree$states[[ts]]$angle0
@@ -339,13 +336,13 @@ alfabet=list(
       tree$out = rbind(tree$out,new_branch)
       return(tree)
     },
-    a20=function(tree){
+    a19=function(tree){
       ts=length(tree$states)
       tree$states[[ts]]$size1=tree$states[[ts]]$size1*(tree$states[[ts]]$factor1+rnorm(1,0,0.1))
       tree$states[[ts]]$size2=tree$states[[ts]]$size2*(tree$states[[ts]]$factor2+rnorm(1,0,0.1))
       return(tree)
     },
-    a21=function(tree){
+    a20=function(tree){
       ts=length(tree$states)
       tree$states[[ts]]$angle0 = tree$states[[ts]]$angle0-runif(3,-0.5,0.5)
       return(tree)
@@ -388,7 +385,7 @@ produce = function(instructions,alfabet,origin=c(0,0,0),
       }
     }
   }
-  return(tree)
+  return(tree[[2]])
 }
 
 

@@ -67,7 +67,7 @@ for(i in seq_len(n)){
               angle=(pi/6), # z axis branching angle
               angle2=(pi/6), # y axis branching angle
               angle3=(pi/6)) # main branch rotation angle
-  trees = rbind(trees,out[[2]])
+  trees = rbind(trees,out)
 }
 
 
@@ -85,4 +85,16 @@ colnames(trees) = c('x','y','z','class')
 scene = rbind(trees,water,ground)
 rgl::bg3d('black')
 rgl::plot3d(scene[,1:3],col=myColorRamp(c('pink2','blue4'),scene[,4]),add=T)
+
+
+
+
+
+
+
+
+
+
+
+
 
