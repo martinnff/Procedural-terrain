@@ -1,5 +1,5 @@
-source('./lSystem.R',local=T)
-source('./perlin_noise.R',local=T)
+source('./lSystem.R')
+source('./perlin_noise.R')
 
 # creation of irregular terrain with water areas
 set.seed(1)
