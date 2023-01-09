@@ -1,3 +1,6 @@
+
+[![CodeFactor](https://www.codefactor.io/repository/github/martinnff/procedural-terrain/badge)](https://www.codefactor.io/repository/github/martinnff/procedural-terrain)
+
 # Procedural-terrain
 
 In my master's degree project I worked with lidar point cloud classification models in a forestry context. One of the problems I encountered was to get labelled datasets with the characteristics I wanted (leaves, branches and ground labelled with mixtures of tree species) and a sufficient size to be able to train deep learning models. While playing Elden Ring I realised that the synthetic trees used to create the maps could be the solution to my lack of real quality data so I decided to employ the methods used in game development to generate my own point clouds.
