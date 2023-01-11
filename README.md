@@ -69,7 +69,7 @@ out=produce(instructions,
 ```
 
 
-A terrain modelling tool is available, this tool uses perlin noise (https://en.wikipedia.org/wiki/Perlin_noise) to create noise artefacts that mimic the irregularities of the terrain. It is possible to recreate surfaces that closely mimic the irregularities of real terrain by stacking several layers of perlin noise at diferent scales.
+A terrain modelling tool is available. This tool uses perlin noise (https://en.wikipedia.org/wiki/Perlin_noise) to create noise artefacts that mimic the irregularities of the terrain. It is possible to recreate surfaces that closely mimic the irregularities of real terrain by stacking several layers of perlin noise at diferent scales.
 
 
 ![Alt text](https://github.com/martinnff/Procedural-terrain/blob/main/image1.png "procedural landscape")
